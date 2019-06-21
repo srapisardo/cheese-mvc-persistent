@@ -19,10 +19,10 @@ import javax.validation.Valid;
 public class MenuController {
 
     @Autowired
-    private CheeseDao cheeseDao;
+    private MenuDao menuDao;
 
     @Autowired
-    private MenuDao menuDao;
+    private CheeseDao cheeseDao;
 
     @RequestMapping(value = "")
     public String index(Model model) {
@@ -30,14 +30,13 @@ public class MenuController {
         model.addAttribute("menu", menuDao.findAll());
         model.addAttribute("title", "Menu");
 
-        return "menu/view";
+        return "menu/index";
     }
 
     @RequestMapping(value = "add", method = RequestMethod.GET)
     public String add(Model model) {
         model.addAttribute("title", "Add Menu");
         model.addAttribute(new Menu());
-        model.addAttribute("menus", menuDao.findAll());
         return "menu/add";
     }
 
@@ -48,7 +47,7 @@ public class MenuController {
             return "menu/add";
         }
 
-        //menuDao.save(menu);
+        menuDao.save(menu);
         return "redirect:view/" + menu.getId();
     }
 

@@ -24,13 +24,11 @@ public class Menu {
     @ManyToMany
     private List<Cheese> cheeses;
 
-    //public void addItem(Cheese item)
+    public Menu() { }
 
     public Menu(String name) {
         this.name = name;
     }
-
-    public Menu() { }
 
     public String getName() {
         return name;
@@ -50,6 +48,10 @@ public class Menu {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public void addItem(Cheese item) {
+        cheeses.add(item);
     }
 }
 
