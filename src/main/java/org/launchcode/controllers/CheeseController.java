@@ -1,11 +1,12 @@
+
 package org.launchcode.controllers;
 
+import org.launchcode.models.Category;
 import org.launchcode.models.Cheese;
+import org.launchcode.models.data.CategoryDao;
 import org.launchcode.models.data.CheeseDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.launchcode.models.Category;
-import org.launchcode.models.data.CategoryDao;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -24,9 +25,10 @@ import java.util.List;
 public class CheeseController {
 
     @Autowired
-    private CheeseDao cheeseDao;
+    CheeseDao cheeseDao;
+
     @Autowired
-    private CategoryDao categoryDao;
+    CategoryDao categoryDao;
 
     // Request path: /cheese
     @RequestMapping(value = "")
@@ -55,7 +57,6 @@ public class CheeseController {
             model.addAttribute("categories", categoryDao.findAll());
             return "cheese/add";
         }
-
 
         Category cat = categoryDao.findOne(categoryId);
         newCheese.setCategory(cat);
