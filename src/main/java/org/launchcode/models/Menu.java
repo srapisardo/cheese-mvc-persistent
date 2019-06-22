@@ -30,29 +30,30 @@ public class Menu {
         this.name = name;
     }
 
-    public String getName() {
-        return name;
+    public void addItem(Cheese item) {
+        cheeses.add(item);
     }
 
     public int getId() {
         return id;
     }
 
-    public List<Cheese> getCheeses() {
-        return cheeses;
+    public String getName() {
+        return name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public List<Cheese> getCheeses() {
+        return cheeses;
     }
 
-    public void addItem(Cheese item) {
-        cheeses.add(item);
-    }
+    //public void setId(int id) {
+    //    this.id = id;
+    //}
+
 }
 
 
