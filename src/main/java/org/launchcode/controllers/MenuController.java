@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,15 +23,15 @@ import javax.validation.Valid;
 public class MenuController {
 
     @Autowired
-    private MenuDao menuDao;
+    MenuDao menuDao;
 
     @Autowired
-    private CheeseDao cheeseDao;
+    CheeseDao cheeseDao;
 
     @RequestMapping(value = "")
     public String index(Model model) {
-        model.addAttribute("title", "Menu");
-        model.addAttribute("menu", menuDao.findAll());
+        model.addAttribute("title", "Menus");
+        model.addAttribute("menus", menuDao.findAll());
         return "menu/index";
     }
 
@@ -89,7 +90,7 @@ public class MenuController {
         theMenu.addItem(theCheese);
         menuDao.save(theMenu);
 
-        return "redirect:menu/view/" + theMenu.getId();
+        return "redirect:view/" + theMenu.getId();
     }
 
 
